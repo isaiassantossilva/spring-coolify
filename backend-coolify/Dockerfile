@@ -30,6 +30,6 @@ USER spring:spring
 EXPOSE 8081
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
-    CMD wget -qO- http://localhost:8080/actuator/health | grep -q '"status":"UP"'
+    CMD wget -qO- http://localhost:8081/actuator/health | grep -q '"status":"UP"'
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
