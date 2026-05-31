@@ -19,7 +19,7 @@ concurrency:
 
 env:
   REGISTRY: registry.lunalive.net
-  IMAGE_NAME: spring-coolify-backend
+  IMAGE_NAME: backend-coolify-app
 
 defaults:
   run:
@@ -95,14 +95,6 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Call Coolify deploy webhook
-        env:
-          WEBHOOK: ${{ secrets.COOLIFY_BACKEND_WEBHOOK }}
-          TOKEN: ${{ secrets.COOLIFY_TOKEN }}
         run: |
-          if [ -z "$WEBHOOK" ] || [ -z "$TOKEN" ]; then
-            echo "::warning::COOLIFY_BACKEND_WEBHOOK or COOLIFY_TOKEN not set; skipping deploy."
-            exit 0
-          fi
-          curl --fail --silent --show-error \
-            --request GET "$WEBHOOK" \
-            --header "Authorization: Bearer $TOKEN"
+          curl ${{ secrets.COOLIFY_BACKEND_WEBHOOK }} \
+            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
