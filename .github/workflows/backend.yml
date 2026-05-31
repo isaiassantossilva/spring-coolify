@@ -94,8 +94,6 @@ jobs:
     #needs: publish
     if: github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v4
-
       - name: Trigger Deploy
         env:
           WEBHOOK: ${{ secrets.COOLIFY_BACKEND_WEBHOOK }}
