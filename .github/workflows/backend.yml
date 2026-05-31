@@ -109,6 +109,10 @@ jobs:
         run: echo "Deploying image"
 
       - name: Trigger Deploy
+        env:
+          WEBHOOK: ${{ secrets.COOLIFY_BACKEND_WEBHOOK }}
+          TOKEN: ${{ secrets.COOLIFY_TOKEN }}
         run: |
-          curl ${{ secrets.COOLIFY_BACKEND_WEBHOOK }} \
-            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
+          echo "Triggering Coolify deploy webhook"
+          echo "WEBHOOK: $WEBHOOK"
+          echo "TOKEN: $TOKEN"
