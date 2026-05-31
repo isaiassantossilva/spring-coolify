@@ -96,4 +96,6 @@ jobs:
     steps:
       - name: Call deploy webhook
         run: |
-          curl --version
+          echo "webhook: ${{ secrets.COOLIFY_BACKEND_WEBHOOK }}"
+          echo "token: ${{ secrets.COOLIFY_TOKEN }}"
+          echo "Triggering deploy with webhook..."
