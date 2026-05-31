@@ -99,6 +99,5 @@ jobs:
           WEBHOOK: ${{ secrets.COOLIFY_BACKEND_WEBHOOK }}
           TOKEN: ${{ secrets.COOLIFY_TOKEN }}
         run: |
-          echo "Triggering Coolify deploy webhook"
-          echo "WEBHOOK: $WEBHOOK"
-          echo "TOKEN: $TOKEN"
+          curl https://coolify.lunalive.net/api/v1/deploy\?uuid\=m12h1m0rymqxph4n1igh9334\&force\=false \    
+            -H "Authorization: Bearer 1|kxuJjcMhXVKTcYUfCcdgcSXfVkA7gtxuL3FnMLG40f6be263"
