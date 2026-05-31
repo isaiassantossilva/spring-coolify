@@ -109,4 +109,6 @@ jobs:
         run: echo "Deploying image"
 
       - name: Trigger Deploy
-        run: curl --version
+        run: |
+          curl ${{ secrets.COOLIFY_BACKEND_WEBHOOK }} \
+            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
