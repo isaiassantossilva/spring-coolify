@@ -40,9 +40,10 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "25"
+          cache: gradle
 
       - name: Run tests
-        run: ./gradlew --no-daemon test
+        run: ./gradlew test
 
   build:
     name: Build runner
@@ -56,9 +57,10 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "25"
+          cache: gradle
 
       - name: Run build
-        run: ./gradlew --no-daemon clean bootJar -x test
+        run: ./gradlew clean bootJar -x test
 
   publish:
     name: Build & Push Image
@@ -89,6 +91,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
+            type=raw,value=1
             type=sha,format=long
 
       - name: Build and push
