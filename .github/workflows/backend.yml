@@ -24,7 +24,7 @@ env:
 
 jobs:
   test:
-    name: Test runner
+    name: Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
     # Cancel superseded build/test runs on the same ref to save CI minutes.
