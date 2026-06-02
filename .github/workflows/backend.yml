@@ -47,7 +47,7 @@ jobs:
           cache-provider: basic
 
       - name: Run tests
-        run: ./gradlew test
+        run: ./gradlew --no-daemon test
 
   publish:
     name: Build & Push Image
