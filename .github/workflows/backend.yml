@@ -131,8 +131,8 @@ jobs:
             -H "Authorization: Bearer $TOKEN")
           echo "response: $http_code"
           if [ "$http_code" -eq 200 ]; then
-            echo "Deploy disparado com sucesso"
+            echo "Deploy successful"
           else
-            echo "Falhou com código $http_code"
+            echo "Deploy failed with code $http_code"
             exit 1
           fi
